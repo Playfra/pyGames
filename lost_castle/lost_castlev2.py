@@ -1,6 +1,4 @@
-###Test
-## Test2
-### test 3
+###PyCharm
 from time import sleep
 
 health = 5
