@@ -1,13 +1,9 @@
-###PyCharm
 from time import sleep
 
 health = 5
 hint = 3
 
-print('''                       
-
-
-
+name = input('''
                 ____    __    ____  _______  __        ______   ______   .___  ___.  _______ 
                 \   \  /  \  /   / |   ____||  |      /      | /  __  \  |   \/   | |   ____|
                  \   \/    \/   /  |  |__   |  |     |  ,----'|  |  |  | |  \  /  | |  |__   
@@ -25,9 +21,8 @@ print('''
             ██      ██    ██ ███████    ██        ██      ███████ ███████    ██    ██      █████   
             ██      ██    ██      ██    ██        ██      ██   ██      ██    ██    ██      ██      
             ███████  ██████  ███████    ██         ██████ ██   ██ ███████    ██    ███████ ███████                                                                         
-
-                                             -|             |-
-                         -|                  [-_-_-_-_-_-_-_-]                  |-
+                                        
+                                             [-_-_-_-_-_-_-_-]                 
                          [-_-_-_-_-]          |             |          [-_-_-_-_-]
                           | o   o |           [  0   0   0  ]           | o   o |
                            |     |    -|       |           |       |-    |     |
@@ -38,15 +33,12 @@ print('''
                            |     ]              [ ||||||| ]              [     |
                        _-_-|_____]--------------[_|||||||_]--------------[_____|-_-_
                       ( (__________------------_____________-------------_________) )
-
-
           ####                                                                                       #### 
           ####     Welcome to the LOST CASTLE. Here you enter and good luck with getting out alive   #### 
           ####                                                                                       ####
 ------------------------------------------------------------------------------------------------------------------
-''')
+ENTER YOUR NAME ''')
 sleep(2)
-name = input("ENTER YOUR NAME ")
 print('WELCOME TO THE GAME' + "," + " " + name)
 
 
@@ -54,12 +46,19 @@ print('WELCOME TO THE GAME' + "," + " " + name)
 def want_to_play():
     play = None
     while play not in ("Y", "N"):
-        play = input('Do you want to play? (Y/N) ').lower()
+        play = input('Are you sure you want to enter? Press:\n [Y] to enter\n [N] to exit\n ').lower()
         if play == 'n':
             print('Cool, see you later')
             break
         elif play == 'y':
-            print('Cool, lets begin')
+            print('''
+.___________. __    __   _______         __  ___  __  .__   __.   _______  _______   ______   .___  ___. 
+|           ||  |  |  | |   ____|       |  |/  / |  | |  \ |  |  /  _____||       \ /  __  \  |   \/   | 
+`---|  |----`|  |__|  | |  |__          |  '  /  |  | |   \|  | |  |  __  |  .--.  |  |  |  | |  \  /  |
+    |  |     |   __   | |   __|         |    <   |  | |  . `  | |  | |_ | |  |  |  |  |  |  | |  |\/|  | 
+    |  |     |  |  |  | |  |____        |  .  \  |  | |  |\   | |  |__| | |  '--'  |  `--'  | |  |  |  | 
+    |__|     |__|  |__| |_______|       |__|\__\ |__| |__| \__|  \______| |_______/ \______/  |__|  |__|          
+                                                  are you going to be our next hero?''')
             char()
         else:
             print('Sorry, didnt catch that')
@@ -68,8 +67,6 @@ def char():
     char = None
     while char not in ("1", "2"):
         char = input('''
-
-
                                    {}                           
                                   .--.                           
                                  /.--.\                           \.|.|./            
@@ -92,15 +89,16 @@ def char():
                       \/      /____/\____\                       w*W*W*W*w
 
 
-                              SIR FRANI                        PRINCESS BUBU
-
-
+                               SIR FRANI                       PRINCESS BUBU
+        
         CHOSE YOUR HERO
         [1] SIR FRANI
         [2] PRINCESS BUBU
         ''')
         if char == '1':
-            print('''YOU CHOSE SIR FRANI
+            print('''
+            
+            YOU CHOSE SIR FRANI
 
                           / \ 
                           | |
@@ -145,10 +143,13 @@ def char():
 
 def life():
     global health
+    if health == 0:
+        game_over()
     while health >= 1:
         print('You lost 1 life')
         health -= 1
-        print('Now you have', health, 'life(s)')
+        print('Now you have', health, 'life(s) left')
+        sleep(2)
         first_choice_frani()
         break
 
@@ -256,10 +257,11 @@ def second_choice_frani():
             life()
         elif second_choice_f == 'h':
             if hint > 0:
-                print('Alright, here is your hint. It is a mythical animal')
+                print('Alright, here is your hint. This animal is a mythic animal')
                 hint_()
-                print('Now you have', hint, 'hint(s)')
                 sleep(2)
+                print('Now you have', hint, 'hint(s) left')
+                sleep(3)
                 second_choice_frani()
             else:
                 print("You don't have any more hints")
@@ -306,10 +308,12 @@ def first_choice_frani():
 
         ''').lower()
         if first_choice_f == '2':
-            print('Correct! You unlocked the door and stole a horse! Here starts your ride back to the caslte')
+            print('Correct! You unlocked the door and stole a horse! Here starts your ride back to the castle')
+            sleep(3)
             second_choice_frani()
         elif first_choice_f == '1':
             print('Sorry, wrong answer, try again.')
+            sleep(2)
             life()
         elif first_choice_f == '3':
             print('Sorry, wrong answer, try again.')
@@ -321,17 +325,33 @@ def first_choice_frani():
             if hint > 0:
                 print('Alright, here is your hint. This island is located in the Arctic Ocean')
                 hint_()
-                print('Now you have', hint, 'hint(s)')
                 sleep(2)
+                print('Now you have', hint, 'hint(s) left')
+                sleep(3)
                 first_choice_frani()
             else:
+                sleep(2)
                 print("You don't have any more hints")
+                sleep(2)
                 first_choice_frani()
         else:
             print('Sorry, didnt catch that')
 
 
-
+def game_over():
+    if health == 0:
+        print('''
+                            
+                    ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗ 
+                    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██║   ██║██╔════╝██╔══██╗
+                    ██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║██║   ██║█████╗  ██████╔╝
+                    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗
+                    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║
+                     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝
+                                                                                  
+        
+        ''')
+        sleep(5)
 
 def main():
     while True:
@@ -345,6 +365,7 @@ def main():
     else:
         print('You are old enough to be legally prosecutable!')
         want_to_play()
+
 
 
 
