@@ -245,15 +245,19 @@ def second_choice_frani():
         ''').lower()
         if second_choice_f == '1':
             print('Correct! You are riding down the path of the Dragon')
+            sleep(3)
             third_choice_frani()
         elif second_choice_f == '2':
             print('Sorry, wrong answer, try again.')
+            sleep(2)
             life()
         elif second_choice_f == '3':
             print('Sorry, wrong answer, try again.')
+            sleep(2)
             life()
         elif second_choice_f == '4':
             print('Sorry, wrong answer, try again.')
+            sleep(2)
             life()
         elif second_choice_f == 'h':
             if hint > 0:
@@ -265,9 +269,11 @@ def second_choice_frani():
                 second_choice_frani()
             else:
                 print("You don't have any more hints")
+                sleep(2)
                 second_choice_frani()
+                sleep(2)
         else:
-            print('Sorry, didnt catch that')
+            print("Sorry, didn't catch that")
 
 
 
@@ -296,7 +302,7 @@ def first_choice_frani():
                    |  ||  |
                    |  ||  |
                   _\.:||:./_
-                 /____/\____\
+                 /____/\____\ 
 
 
 
@@ -317,9 +323,11 @@ def first_choice_frani():
             life()
         elif first_choice_f == '3':
             print('Sorry, wrong answer, try again.')
+            sleep(2)
             life()
         elif first_choice_f == '4':
             print('Sorry, wrong answer, try again.')
+            sleep(2)
             life()
         elif first_choice_f == 'h':
             if hint > 0:
